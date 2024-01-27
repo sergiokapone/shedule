@@ -1,0 +1,46 @@
+\documentclass[]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[english, russian, ukrainian]{babel}
+
+
+\newcount\tccol
+\newcount\tcrow
+\tccol=2
+
+\makeatletter
+\def\cell@coordinate#1#2{\csname cc#1#2\endcsname}
+
+\def\cell@macro#1#2#3{%
+\expandafter\def\csname cm#1#2\endcsname{\unexpanded{#3}}
+\csname cm#1#2\endcsname
+}
+
+\def\cell@counter#1#2#3{%
+\expandafter\xdef\csname ccount#1#2\endcsname{#3}
+\csname ccount#1#2\endcsname
+}
+
+\newcommand{\CellCoordinate}[2]{\cell@coordinate{#1}{#2}}
+\newcommand{\CellCounter}[3]{\cell@counter{#1}{#2}{#3}}
+\newcommand{\CellMacro}[3]{\cell@macro{#1}{#2}{#3}}
+
+\newcommand\Cell[4]{
+\CellCoordinate{#1}{#2}
+\CellCounter{#1}{#2}{#4}
+\CellMacro{#1}{#2}{#3}
+}
+\makeatother
+
+\begin{document}
+
+\begin{tabular}{|c|c|c|}
+\hline
+\Cell{1}{1}{\bfseries}{\the\tccol} &\Cell{1}{2}{}{\the\tccol} & \\\hline
+& & \\\hline
+& & \\\hline
+& & \\\hline
+\end{tabular}
+
+\end{document}
