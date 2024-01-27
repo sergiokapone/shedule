@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2024.1.24)  26 JAN 2024 16:48
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2024.1.24)  27 JAN 2024 22:40
  system commands enabled.
 **Shedule2024.tex
 (./Shedule2024.tex
@@ -1072,42 +1072,42 @@ e
 ))
 Package hyperref Info: Link coloring OFF on input line 409.
 
-Overfull \hbox (2.26018pt too wide) in paragraph at lines 472--472
+Overfull \hbox (2.26018pt too wide) in paragraph at lines 514--514
 []|\TU/CMUSerif(0)/m/n/12 Дні| 
  []
 
 
-Overfull \hbox (4.58147pt too wide) in paragraph at lines 472--472
+Overfull \hbox (4.58147pt too wide) in paragraph at lines 514--514
 [][] 
  []
 
 
-Overfull \hbox (4.97746pt too wide) in paragraph at lines 472--472
+Overfull \hbox (4.97746pt too wide) in paragraph at lines 514--514
 [][] 
  []
 
 
-Overfull \hbox (5.01346pt too wide) in paragraph at lines 472--472
+Overfull \hbox (5.01346pt too wide) in paragraph at lines 514--514
 [][] 
  []
 
 
-Overfull \hbox (2.26018pt too wide) in paragraph at lines 472--472
+Overfull \hbox (2.26018pt too wide) in paragraph at lines 514--514
 []|\TU/CMUSerif(0)/m/n/12 Дні| 
  []
 
 
-Overfull \hbox (4.88145pt too wide) in paragraph at lines 472--472
+Overfull \hbox (4.88145pt too wide) in paragraph at lines 514--514
 [][] 
  []
 
 
-Overfull \hbox (4.58147pt too wide) in paragraph at lines 472--472
+Overfull \hbox (4.58147pt too wide) in paragraph at lines 514--514
 [][] 
  []
 
 
-Overfull \hbox (5.07346pt too wide) in paragraph at lines 472--472
+Overfull \hbox (5.07346pt too wide) in paragraph at lines 514--514
 [][] 
  []
 
@@ -1132,7 +1132,7 @@ Here is how much of LuaTeX's memory you used:
    avail lists: 1:26,2:6410,3:861,4:189,5:542,6:558,7:9322,8:36,9:7497,10:9,11:1
 80
  49018 multiletter control sequences out of 65536+600000
- 98 fonts using 37875751 bytes
+ 98 fonts using 37875527 bytes
  88i,17n,89p,2761b,435s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentype/public/cm-unicode/cmun
 tt.otf><d:/Programs/LaTeX/TeXLive/2023/texmf-dist/fonts/opentype/public/cm-unico
