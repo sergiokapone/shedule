@@ -1,0 +1,131 @@
+
+% !TeX program = lualatex
+% !TeX encoding = utf8
+% !TeX spellcheck = uk_UA
+
+\documentclass[14pt, landscape]{extarticle}
+
+\usepackage{fontspec}
+\setsansfont{CMU Sans Serif}%{Arial}
+\setmainfont{CMU Serif}%{Times New Roman}
+\setmonofont{CMU Typewriter Text}%{Consolas}
+\defaultfontfeatures{Ligatures={TeX}}
+\usepackage[math-style=TeX]{unicode-math}
+\usepackage[english, russian, ukrainian]{babel}
+
+
+\usepackage[%
+	a4paper,%
+	footskip=0cm,%
+	headsep=0.3cm,%
+	top=1cm, %поле сверху
+	bottom=1cm, %поле снизу
+	left=0.5cm, %поле ліворуч
+	right=0.5cm, %поле праворуч
+    ]{geometry}
+
+\renewcommand{\baselinestretch}{1}
+
+
+\setlength{\parskip}{0.5ex}%
+\setlength{\parindent}{2.5em}%
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tabularray}
+
+\usepackage[%colorlinks=true,
+	%urlcolor = blue, %Colour for external hyperlinks
+	%linkcolor  = malina, %Colour of internal links
+	%citecolor  = green, %Colour of citations
+	bookmarks = true,
+	bookmarksnumbered=true,
+	unicode,
+	linktoc = all,
+	hypertexnames=false,
+	pdftoolbar=false,
+	pdfpagelayout=TwoPageRight,
+	pdfauthor={Ponomarenko S.M. aka sergiokapone},
+	pdfdisplaydoctitle=true,
+	pdfencoding=auto
+	]%
+	{hyperref}
+		\makeatletter
+	\AtBeginDocument{
+	\hypersetup{
+		pdfinfo={
+		Title={\@title},
+		}
+	}
+	}
+	\makeatother
+
+\title{}
+\author{}
+
+
+\NewDocumentCommand{\A}{}{{8\textsuperscript{30} -- 10\textsuperscript{05}}}
+\NewDocumentCommand{\B}{}{{10\textsuperscript{25} -- 12\textsuperscript{00}}}
+\NewDocumentCommand{\C}{}{{12\textsuperscript{20} -- 13\textsuperscript{55}}}
+\NewDocumentCommand{\D}{}{{14\textsuperscript{15} -- 15\textsuperscript{50}}}
+\NewDocumentCommand{\E}{}{{16\textsuperscript{10} -- 17\textsuperscript{45}}}
+\NewDocumentCommand{\F}{}{{18\textsuperscript{30} -- 20\textsuperscript{05}}}
+\NewDocumentCommand{\G}{}{{20\textsuperscript{20} -- 21\textsuperscript{55}}}
+
+\NewDocumentCommand{\Mo}{}{Понеділок}
+\NewDocumentCommand{\Tu}{}{Вівторок}
+\NewDocumentCommand{\We}{}{Середа}
+\NewDocumentCommand{\Th}{}{Четвер}
+\NewDocumentCommand{\Fr}{}{П'ятниця}
+\NewDocumentCommand{\Sa}{}{Субота}
+
+\begin{document}
+\thispagestyle{empty}
+
+
+\begin{center}\LARGE\bfseries
+Розклад занять
+\end{center}
+
+\begin{center}
+\begin{tblr}{
+colspec={Q[c,m]Q[c,m]X[c,m]X[c,m,]Q[c,m]Q[c,m]X[c,m]X[c,m]},
+row{odd} = {cyan!10},
+row{even} = {gray!10},
+row{1}={c, m, 1cm, bg=gray!20, font=\bfseries},
+cell{2,9,16}{1,5} = {r=7,c=1}{cmd=\rotatebox{90}, bg=gray!20, font=\bfseries},
+hline{2,9,16}={1}{-}{},
+hline{2,9,16}={2}{-}{},
+vline{2,3,6,7}={1}{-}{},
+vline{2,3,6,7}={2}{-}{},
+vline{5}={1}{-}{},
+vline{5}={2}{-}{},
+vlines,
+hlines,
+}
+Дні & Години & I Тиждень & II Тиждень & Дні & Години & I Тиждень & II Тиждень \\
+\Mo & \A     &           &            & \Th & \A     &           &            \\
+    & \B     &           &            &     & \B     &           &            \\
+    & \C     &           &            &     & \C     &           &            \\
+    & \D     &           &            &     & \D     &           &            \\
+    & \E     &           &            &     & \E     &           &            \\
+    & \F     &           &            &     & \F     &           &            \\
+    & \G     &           &            &     & \G     &           &            \\
+\Tu & \A     &           &            & \Fr & \A     &           &            \\
+    & \B     &           &            &     & \B     &           &            \\
+    & \C     &           &            &     & \C     &           &            \\
+    & \D     &           &            &     & \D     &           &            \\
+    & \E     &           &            &     & \E     &           &            \\
+    & \F     &           &            &     & \F     &           &            \\
+    & \G     &           &            &     & \G     &           &            \\
+\We & \A     &           &            & \Sa & \A     &           &            \\
+    & \B     &           &            &     & \B     &           &            \\
+    & \C     &           &            &     & \C     &           &            \\
+    & \D     &           &            &     & \D     &           &            \\
+    & \E     &           &            &     & \E     &           &            \\
+    & \F     &           &            &     & \F     &           &            \\
+    & \G     &           &            &     & \G     &           &            \\
+\end{tblr}
+\end{center}
+\end{document}

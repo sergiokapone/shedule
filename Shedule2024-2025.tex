@@ -204,19 +204,33 @@
 \prg_replicate:nn {#1} {#2}
 }
 
-\NewDocumentCommand{\nrprint}{ m m}
-{
+%\NewDocumentCommand{\nrprint}{ m m}
+%{
+%
+%	\int_set:Nn \l_tmpa_int {#1}
+%	\int_compare:nTF{#2 = 9 }{
+%	\int_incr:N \l_tmpa_int
+%		#1/\int_use:N \l_tmpa_int
+%	} {
+%	\int_decr:N \l_tmpa_int
+%	\int_use:N \l_tmpa_int/#1
+%	}
+%
+%}
 
-	\int_set:Nn \l_tmpa_int {#1}
-	\int_compare:nTF{#2 = 9 }{
-	\int_incr:N \l_tmpa_int
-		#1/\int_use:N \l_tmpa_int
-	} {
-	\int_decr:N \l_tmpa_int
-	\int_use:N \l_tmpa_int/#1
-	}
-
+% Определяем команду
+\NewDocumentCommand{\nrprint}{m m}{
+  \int_set:Nn \l_tmpa_int {#1} % Сохраняем год во временную переменную
+  \int_compare:nTF {#2 = 9} { % Если #2 равен 9 (осенний семестр)
+    \int_incr:N \l_tmpa_int % Увеличиваем год на 1
+    \int_use:N \l_tmpa_int / #1 % Формируем учебный год "текущий/следующий"
+  } {
+    \int_decr:N \l_tmpa_int % Уменьшаем год на 1
+    \int_use:N \l_tmpa_int / #1 % Формируем учебный год "предыдущий/текущий"
+  }
 }
+
+
 \ExplSyntaxOff
 
 
@@ -245,7 +259,7 @@
 \def\TableHead#1{%
 \begin{center}
 	{\LARGE #1} \\
-	на \textbf{\nrprint{\thestartyear}{\thestartmonth}} навчальний рік \\
+	на \textbf{\nrprint{\the\year}{\thestartmonth}} навчальний рік \\
 	\bigskip
 
 	\textbf{\large\semestrprint{\thestartmonth}}
@@ -398,9 +412,9 @@
 \newcounter{startdayname}
 \gdef\StartSemestrDate<#1-#2-#3>{%
 	\setdatenumber{#1}{#2}{#3}
-	\setcounter{startyear}{\thedateyear}
-	\setcounter{startmonth}{\thedatemonth}
-	\setcounter{startday}{\thedateday}
+	\setcounter{startyear}{#1}
+	\setcounter{startmonth}{#2}
+	\setcounter{startday}{#3}
 	\setcounter{startdayname}{\thedatedayname}%
 }
 
@@ -408,8 +422,10 @@
 
 \begin{document}
 \pagestyle{empty}
+
+
 %========================= Дані =====================
-\StartSemestrDate<\the\year-09-02> % дата початку семестру
+\StartSemestrDate<\the\year-02-03> % дата початку семестру
 %------------------ Формат заповнення клітини розкладу -------------------------
 % \MyPara{1 або 2 тиждень}{День тижня}{Номер пари}|<колір>|<Група,Предмет,Тип пари,аудиторія>
 
@@ -418,42 +434,37 @@
 % ===================================================
 % ----------------------- 1 пара --------------------
 % ----------------------- 2 пара --------------------
-\MyPara{1}{\thedow}{2}|red!20|<ФФ-31,ЕлМаг,lec,->
-\MyPara{2}{\thedow}{2}|red!20|<ФФ-31,ЕлМаг,lec,->
 % ----------------------- 3 пара --------------------
 % ----------------------- 4 пара --------------------
 % ----------------------- 5 пара --------------------
-%
-%
-%
-%
 %
 % ========================= Вівторок ================
 \setcounter{dow}{2}
 % ===================================================
 % ----------------------- 1 пара --------------------
+\MyPara{1}{\thedow}{1}|red!20|<ФФ-41мн,Кватн. хімія,lec,->
+\MyPara{2}{\thedow}{1}|red!20|<ФФ-41мн,Кватн. хімія,lec,->
 % ----------------------- 2 пара --------------------
-\MyPara{1}{\thedow}{2}|yellow!20|<ФФ-31,ЕлМаг,lab,->
-\MyPara{2}{\thedow}{2}|yellow!20|<ФФ-31,ЕлМаг,lab,->
+\MyPara{1}{\thedow}{2}|yellow!20|<ФІ-11/12,\LaTeX,lab,->
+\MyPara{2}{\thedow}{2}|yellow!20|<ФІ-11/12,\LaTeX,lab,->
 % ----------------------- 3 пара --------------------
-\MyPara{1}{\thedow}{3}|yellow!20|<ФФ-31,ЕлМаг,lab,->
-\MyPara{2}{\thedow}{3}|yellow!20|<ФФ-31,ЕлМаг,lab,->
-% ----------------------- 5 пара --------------------
-%
-%
-%
-%
-%
+\MyPara{1}{\thedow}{3}|yellow!20|<ФІ-13/14,\LaTeX,lab,->
+\MyPara{2}{\thedow}{3}|yellow!20|<ФІ-13/14,\LaTeX,lab,->
+% ----------------------- 4 пара --------------------
+\MyPara{1}{\thedow}{4}|red!20|<ФФ-41мн,Кватн. хімія,pr,->
+\MyPara{2}{\thedow}{4}|red!20|<ФФ-41мн,Кватн. хімія,pr,->
+
 % ======================= Середа ====================
 \setcounter{dow}{3}
 % ===================================================
 % ----------------------- 1 пара --------------------
 % ----------------------- 2 пара --------------------
-\MyPara{2}{\thedow}{2}|green!20|<ФФ-41мн,Фізика горіння,pr,->
 % ----------------------- 3 пара --------------------
+\MyPara{1}{\thedow}{3}|cyan!20|<ФФ-41мн,Фізика плазми,lec,->
+\MyPara{2}{\thedow}{3}|cyan!20|<ФФ-41мн,Фізика плазми,lec,->
 % ----------------------- 4 пара --------------------
-\MyPara{1}{\thedow}{4}|green!20|<ФФ-41мн,Фізика горіння,lec,->
-\MyPara{2}{\thedow}{4}|green!20|<ФФ-41мн,Фізика горіння,lec,->
+\MyPara{1}{\thedow}{4}|cyan!20|<ФФ-41мн,Фізика плазми,pr,->
+\MyPara{2}{\thedow}{4}|cyan!20|<ФФ-41мн,Фізика плазми,pr,->
 % ----------------------- 5 пара --------------------
 %
 %
@@ -465,9 +476,13 @@
 % ===================================================
 % ----------------------- 1 пара --------------------
 % ----------------------- 2 пара --------------------
+\MyPara{2}{\thedow}{2}|green!20|<ФФ-31,Комп. пакети,lec,->
 % ----------------------- 3 пара --------------------
+\MyPara{1}{\thedow}{3}|yellow!20|<ФІ-11/12/13/14,\LaTeX,lec,->
+\MyPara{2}{\thedow}{3}|yellow!20|<ФІ-11/12/13/14,\LaTeX,lec,->
 % ----------------------- 4 пара --------------------
-\MyPara{2}{\thedow}{4}|brown!20|<ФФ-41,Введення,pr,154-01>
+\MyPara{1}{\thedow}{4}|green!20|<ФФ-31,Комп. пакети,pr,->
+\MyPara{2}{\thedow}{4}|green!20|<ФФ-31,Комп. пакети,pr,->
 % ----------------------- 5 пара --------------------
 %
 %
@@ -507,5 +522,5 @@
 
 \vfill\noindent%
 Розклад ФТІ: \url{http://ipt.kpi.ua/navchalnij-protses}\\
-Розклад КПІ: \url{http://rozklad.kpi.ua}
+Розклад КПІ: \url{https://schedule.kpi.ua/lecturers?lecturerId=547e2523-eb5e-4148-bcef-f4f024e537c6}
 \end{document}
